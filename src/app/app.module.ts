@@ -9,19 +9,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreDetailComponent } from './student/pre-detail/pre-detail.component';
+import { ClassLawComponent } from './class-law/class-law/class-law.component';
+import { StudentDropzoneComponent } from './student/student-dropzone/student-dropzone.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
-    PreDetailComponent
+    PreDetailComponent,
+    ClassLawComponent,
+    StudentDropzoneComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
+    NgxDropzoneModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

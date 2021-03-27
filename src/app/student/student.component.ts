@@ -1,3 +1,4 @@
+import { StudentDropzoneComponent } from './student-dropzone/student-dropzone.component';
 import { StudentPrediction, DataPredicton } from './student-prediction.model';
 import { PreDetailComponent } from './pre-detail/pre-detail.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -35,5 +36,9 @@ export class StudentComponent implements OnInit {
     const modalRef = this.modal.open(PreDetailComponent, {size: 'lg', backdrop: 'static'});
     modalRef.componentInstance.student = student;
     modalRef.componentInstance.headers = this.headers.slice();
+  }
+
+  import() {
+    const modalRef = this.modal.open(StudentDropzoneComponent, {size: 'lg', backdrop: 'static'});
   }
 }

@@ -17,4 +17,11 @@ export class StudentService {
     })};
     return this.http.get<StudentPrediction>(`${this.coreUrl}predict`, params);
   }
+
+  import(formData: FormData) {
+    return this.http.post<{
+      status: Number,
+      message: String
+    }>(`${this.coreUrl}students-import`, formData);
+  }
 }
