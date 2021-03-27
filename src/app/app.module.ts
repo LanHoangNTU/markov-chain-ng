@@ -7,6 +7,8 @@ import { StudentComponent } from './student/student.component';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreDetailComponent } from './student/pre-detail/pre-detail.component';
 import { ClassLawComponent } from './class-law/class-law/class-law.component';
@@ -26,6 +28,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     NgbModule,
     NgxDropzoneModule
   ],

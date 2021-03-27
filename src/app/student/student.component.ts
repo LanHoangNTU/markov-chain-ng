@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
   data: DataPredicton[];
+  filteredData: DataPredicton[];
   headers: String[];
   students: StudentPrediction
 
@@ -28,8 +29,32 @@ export class StudentComponent implements OnInit {
         this.headers.push(data.headers[key]);
       }
       this.data = data.data;
+      this.filter();
       console.log(this.headers);
     });
+  }
+
+  filter(filter: String = null) {
+    if (!filter) {
+      this.filteredData = Object.assign([], this.data);
+    }
+    else {
+      const name = this.normalize(filter);
+      
+      this.filteredData = Object.assign([], this.data)
+          .filter(item => this.normalize(item.name)
+            .toLowerCase()
+            .includes(name.toLowerCase())
+          );
+    }
+  }
+
+  normalize(str: String) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D");
   }
 
   getMoreData(student: DataPredicton) {
@@ -40,5 +65,10 @@ export class StudentComponent implements OnInit {
 
   import() {
     const modalRef = this.modal.open(StudentDropzoneComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.closed.subscribe(reason => {
+      if (reason === 'uploaded') {
+        this.getData();
+      }
+    })
   }
 }

@@ -30,18 +30,19 @@ export class StudentDropzoneComponent implements OnInit {
     const formData = new FormData();
     formData.append("file", this.file);
     this.service.import(formData)
-        .subscribe(res => {
+        .subscribe( (res) => {
           console.log(res);
-          if (res.status == 200)
+          if (res.status == 200) {
             alert("Bạn đã tải file lên server thành công");
-          else
+            this.activeModal.close('uploaded');
+          } else {
             alert("Status: " + res.status + "\nMessage: " + res.message);
+          }
+          
     });
-
-    this.close();
   }
 
-  close() {
-    this.activeModal.close();
+  close(reason: String = null) {
+    this.activeModal.close(reason);
   }
 }
