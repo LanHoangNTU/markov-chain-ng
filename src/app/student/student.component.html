@@ -1,0 +1,17 @@
+<h2 class="text-right">
+    <button (click)="getData()" mat-raised-button>Tải dữ liệu</button>
+</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th *ngFor = "let header of headers"> {{ header }} </th>
+        <th></th>
+    </tr>
+    <tr *ngFor = "let obj of data">
+        <td>{{ obj.name }}</td>
+        <td *ngFor = "let prediction of obj.result[0] | keyvalue">
+            {{prediction.value}}
+        </td>
+        <td class="text-center"><button class="btn btn-info" (click)="getMoreData(obj)">Chi tiết</button></td>
+    </tr>
+</table>
